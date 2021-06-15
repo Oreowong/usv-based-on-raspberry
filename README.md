@@ -1,7 +1,10 @@
 # 基于树莓派的的USV
 
 #### 介绍
-以树莓派为核心搭建一个无人船平台
+以树莓派4B为核心搭建一个无人船平台
+
+#### 功能介绍
+
 
 #### 软件架构
 软件架构说明
@@ -9,15 +12,15 @@
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  git clone https://gitee.com/wang-aogang/usv-based-on-raspberry
+2.  cd usv-based-on-raspberry/Threading
+3.  python3 Thread.py
 
 #### 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  远程视频传输功能需要用到mjpg_streamer来实现，使用摄像头前请查看代码camera_thread.py，确保正确调用mjpg_streamer
+2.  由于无线数传模块，GPS模块和九轴传感器模块都是通过USB与树莓派连接,所以在调试前先查看代码确保ttyUSB*对应的是正确的器件
+3.  
 
 #### 参与贡献
 
