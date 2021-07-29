@@ -8,6 +8,7 @@
 5. $ git config --global user.email "yyy@qq.com"  //自报家门 - 你的联系邮箱
 
 //这个时候你可以把你新建一个开发文件，如：index.php
+//查看状态 git status
 
 6. $ git add .             //当前所有文件添加到暂存区， . 表示全部更新，<file>表示更新指定文件
 

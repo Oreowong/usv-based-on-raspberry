@@ -10,6 +10,7 @@ GPIO.setwarnings(False)
 GPIO.cleanup()
 GPIO.setmode(GPIO.BOARD)        #将GPIO编程方式设置为BOARD模式
 # 输出模式
+#修改PWM输出个数，从而控制四电机浮标
 GPIO.setup(11, GPIO.OUT)        #将GPIO引脚11设置为输出引脚
 MotorR = GPIO.PWM(11, 50)
 MotorR.start(7.1)
