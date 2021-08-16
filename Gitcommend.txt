@@ -17,3 +17,4 @@
 8. $ git remot add origin https://gitee.com/用户地址/gitcode.git    //添加远程仓库
 
 9. $ git push origin master                       //将本地提交推送到远程仓库
+##git push --set-upstream origin buoy             //切换分支
