@@ -61,15 +61,15 @@ if __name__ == "__main__":
 
   board.set_pwm_enable()                # Pwm channel need external power
   # board.set_pwm_disable()
-  board.set_pwm_frequency(1000)         # Set frequency to 1000HZ, Attention: PWM voltage depends on independent power supply
+  board.set_pwm_frequency(50)         # Set frequency to 1000HZ, Attention: PWM voltage depends on independent power supply
 
   while True:
     print("set all pwm channels duty to 30%")
-    board.set_pwm_duty(board.ALL, 30)   # Set all pwm channels duty
+    board.set_pwm_duty(board.ALL, 8)   # Set all pwm channels duty
     time.sleep(1)
 
-    print("set part pwm channels duty to 60%")
-    board.set_pwm_duty(0, 60)   # Set pwm0 channels duty
+    #print("set part pwm channels duty to 60%")
+    #board.set_pwm_duty(0, 6)   # Set pwm0 channels duty
     #board.set_pwm_duty(1, 70)  # Set pwm1 channels duty
     #board.set_pwm_duty(2, 80)  # Set pwm2 channels duty
     #board.set_pwm_duty(3, 90)  # Set pwm3 channels duty

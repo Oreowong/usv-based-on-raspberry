@@ -2,13 +2,16 @@
 import RPi.GPIO as GPIO                 # 引入GPIO模块
 
 if __name__ == '__main__':
-    LedPin = 12
-    freq = 50                         # 存放PWM频率变量，这里初始值为100，可以根据实际需要修改
+    LedPin = 4
+    
+    
+
+    freq = 50                          # 存放PWM频率变量，这里初始值为100，可以根据实际需要修改
     dc = 7.2                           # 存放PWM占空比变量，这里初始值为0，可以根据实际需要修改
 
 
-    GPIO.setmode(GPIO.BOARD)              # 使用BCM编号方式
-    GPIO.setup(LedPin, GPIO.OUT)        # 将GPIO19设置为输出模式
+    GPIO.setmode(GPIO.BCM)              # 使用BCM编号方式
+    GPIO.setup(LedPin, GPIO.OUT)        # 将GPIO设置为输出模式
 
     pwm = GPIO.PWM(LedPin, freq)        # 创建PWM对象，并指定初始频率
     pwm.start(dc)                       # 启动PWM，并指定初始占空比

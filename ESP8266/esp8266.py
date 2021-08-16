@@ -1,4 +1,5 @@
 # encoding:UTF-8
+#通过串口向esp8266发送数据，然后数据包在esp8266解析后上传到云端
 import serial # 导入串口包
 import time   # 导入时间包
 import threading
@@ -7,16 +8,16 @@ class Config:
     # 端口号
     serialPort = '/dev/ttyUSB0' 
     # 波特率 
-    baudRate = 9600 
+    baudRate = 115200
 
-class Serialthread:
+class Espthread:
     def __init__(self): 
         self.port = serial.Serial(Config.serialPort, Config.baudRate,timeout = 0)
         self.port.close()
         if not self.port.isOpen():
             self.port.open()
         self.working = False
-        self.iniVariable()#初始化变量
+        self.iniVariable()  #初始化变量
     #打开
     def open(self):
         if not self.port.isOpen():
@@ -26,20 +27,18 @@ class Serialthread:
         self.port.close()
     #初始化解析相关的变量
     def iniVariable(self):    
-        self.Rev_data =  " "
+        self.Send_data =  " " 
+        self.Rev_data = "s"      
     #发送数据
     def send(self, data):
-        #串口收发的数据是bytes类型，通过encode()将str转变为bytes
-        self.port.write(data.encode("gbk"))
+        self.port.write(data)
     #接收数据
     def receive(self):        
         while self.working:
             #休眠一个微小的时间，可以避免无谓的CPU占用
             time.sleep(0.001)
             if self.port.in_waiting > 0 :
-                #串口收发的数据是bytes类型，通过decode()将bytes转变为str
-                self.Rev_data = self.port.readline().decode("gbk")
-               
+                self.Rev_data = self.port.readline()
     #开始工作
     def start(self):
         #开始数据读取线程
@@ -54,12 +53,13 @@ class Serialthread:
         
 #如果本文件被引用则面函数不被执行
 if __name__=="__main__":
-    s = Serialthread()
-    s.start()
+    e = Espthread()
+    e.start()
 
     while True:
         time.sleep(1)
-        s.send(s.Rev_data)
-        print(s.Rev_data)
+        e.send("+TestData-")
+        data = e.Rev_data
+        print(e.Rev_data)
         
 
