@@ -28,7 +28,7 @@ class Espthread:
     #初始化解析相关的变量
     def iniVariable(self):    
         self.Send_data =  " " 
-        self.Rev_data = "s"      
+        self.Rev_data = " "      
     #发送数据
     def send(self, data):
         self.port.write(data)
