@@ -9,8 +9,11 @@ from jy901 import SensorReader
 from jy901 import DataParser
 from camera_thread import Camthread
 from serial_thread import Serialthread 
+from esp8266 _thread import Espthread
+from TDS_thread import TdsReader
 
 def main():
+        '''
         #开启无线数传线程
         ser = Serialthread()
         ser.start()
@@ -26,8 +29,17 @@ def main():
         #开启摄像头视频实时传输线程
         c = Camthread()
         c.start()  
+        '''
+        e = Espthread()
+        e.start()
+        t=TdsReader()#创建一个类的实例，并且调用init函数
+        t.start()
+        
         while True:
                 time.sleep(1)
+                a = t.TdsVal
+                e.send("+TestData-")
+                '''
                 print("加速度",j.a)#加速度
                 print("角速度:",j.w)#角速度
                 print("角度:",j.Angle)#角度
@@ -35,6 +47,7 @@ def main():
                 print("mag:",j.h)
                 ser.send(p.Direct)
                 print(p.Direct)
+                '''
 
 if __name__ == '__main__':
         main()
