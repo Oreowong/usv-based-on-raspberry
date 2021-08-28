@@ -25,6 +25,8 @@
 
 9. $ git push origin master                       //将本地提交推送到远程仓库
 
+10.$ git config  credential.helper store          //免密码指令
+
 ####新建分支
 $ git branch 查看本地所有分支
 $ git checkout -b dev 建立一个新的本地分支dev
